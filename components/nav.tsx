@@ -7,13 +7,13 @@ import style from './nav.module.scss';
 
 const decemberDays = [
   [
-    'nov27', 'nov28', 'nov29', 'nov30',
-    ...generateArray(3, i => `${i + 1}`)
+    ...generateArray(6, i => `nov${i + 25}`),
+    ...generateArray(1, i => `${i + 1}`)
   ],
-  generateArray(7, i => `${i + 4}`),
-  generateArray(7, i => `${i + 11}`),
-  generateArray(7, i => `${i + 18}`),
-  generateArray(1, i => `${i + 25}`)
+  generateArray(7, i => `${i + 2}`),
+  generateArray(7, i => `${i + 9}`),
+  generateArray(7, i => `${i + 16}`),
+  generateArray(3, i => `${i + 23}`)
 ];
 
 const Nav: React.FC = () => {
@@ -27,7 +27,7 @@ const Nav: React.FC = () => {
         </thead>
         <tbody>{
           decemberDays.map((week) => <tr key={week[6]} data-key={week[6]}>{
-            week.map((day) => <td align="right" key={`d${day}`} data-key={`d${day}`}>{
+            week.map((day) => <td align="right" key={`d-${day}`} data-key={`d-${day}`}>{
               (!day.startsWith('nov')) ? <Link href={`/day/${day}`}>{day}</Link> : ' '
             }</td>)
           }</tr>)

@@ -44,8 +44,6 @@ export function part2() {
     return false;
   });
 
-  console.log(safeReports);
-
   return safeReports.length;
 }
 
