@@ -7,6 +7,10 @@ export function* pairs(
 ) {
   let i = start;
 
+  if (length < 2) {
+    return;
+  }
+
   do {
     let j = i + gap
 

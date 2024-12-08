@@ -40,6 +40,8 @@ const Nav: React.FC = () => {
           </li>
         ))}
         <li><a href="https://adventofcode.com/2024/" target="_blank" rel="noreferrer">AoC 2024</a></li>
+        <li><a href="https://github.com/roughearth/aoc2024" target="_blank" rel="noreferrer">Github</a></li>
+        <li><a href={`https://github.com/roughearth/aoc2024/tree/main/lib/days/day${currentDay()}`} target="_blank" rel="noreferrer">Github today</a></li>
       </ul>
     </>
   );
