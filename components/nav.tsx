@@ -26,7 +26,7 @@ const Nav: React.FC = () => {
           <tr><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th><th>Su</th></tr>
         </thead>
         <tbody>{
-          decemberDays.map((week) => <tr key={week[6]} data-key={week[6]}>{
+          decemberDays.map((week) => <tr key={week[6] || 'end'} data-key={week[6] || 'end'}>{
             week.map((day) => <td align="right" key={`d-${day}`} data-key={`d-${day}`}>{
               (!day.startsWith('nov')) ? <Link href={`/day/${day}`}>{day}</Link> : ' '
             }</td>)
