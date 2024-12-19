@@ -30,7 +30,11 @@ function nextUnvisitedNode<T>(unvisitedNodes: Set<T>, distanceMap: Map<T, number
 export function dijkstraFrom<T>(
   startNode: T,
   edgeFn: (n: T) => [T, number][],
-  options?: {maxLoops?: number, maxMs?: number} // set up a safety net
+  options?: {
+    maxLoops?: number, // set up a safety net
+    maxMs?: number, // set up a safety net
+    maxCost?: number
+  }
 ): Dijkstra<T> {
   function* nodes(): Generator<NodeTuple<T>, void, unknown> {
     let loopCount = 0;
@@ -57,6 +61,11 @@ export function dijkstraFrom<T>(
 
       for (let [node, cost] of edgeFn(current)) {
         const nextDistance = distance + cost;
+
+        if (options?.maxCost && nextDistance > options.maxCost) {
+          continue;
+        }
+
         const nextPath = [...path, node];
 
         if (!allNodes.has(node)) {
@@ -74,7 +83,7 @@ export function dijkstraFrom<T>(
         }
       }
 
-      yield [current, distance, path];
+      yield [current, distance, path, pathMap];
     }
   }
 
@@ -82,9 +91,9 @@ export function dijkstraFrom<T>(
     [Symbol.iterator]: nodes,
     // test if the node is target, return the node and its distance
     find(targetFn: (n: T) => boolean): NodeTuple<T> {
-      for (let [node, cost, path] of nodes()) {
+      for (let [node, cost, path, map] of nodes()) {
         if (targetFn(node)) {
-          return [node, cost, path];
+          return [node, cost, path, map];
         }
       }
 
@@ -107,7 +116,7 @@ export function dijkstraFrom<T>(
   }
 }
 
-export type NodeTuple<T> = [T, number, T[]];
+export type NodeTuple<T> = [T, number, T[], any?];
 
 export type Dijkstra<T> = {
   [Symbol.iterator]: () => Generator<NodeTuple<T>, void, unknown>,

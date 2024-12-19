@@ -81,7 +81,7 @@ export function part2() {
   return sumOf(costs);
 }
 
-// export const answers = [
-//   54601,
-//   54078
-// ];
+export const answers = [
+  32067,
+  92871736253789
+];

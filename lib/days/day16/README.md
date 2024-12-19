@@ -1,2 +1,3 @@
 # Day 16
 
+Pat=rt 2 took an hour and a quater to run...
