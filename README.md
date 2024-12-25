@@ -12,3 +12,10 @@ React front end, scaffolded in NextJS (but an old version, since this isn't the 
 | [16](lib/days/day16) | [17](lib/days/day17) | [18](lib/days/day18) | [19](lib/days/day19) | [20](lib/days/day20) | [21](lib/days/day21) | [22](lib/days/day22) |
 | [23](lib/days/day23) | [24](lib/days/day24) | [25](lib/days/day25) |                    - |                    - |                    - |                    - |
 
+## TODO
+The following days' parts 2 are still to be done;
+
+* 17
+* 21
+* 23
+* 24
